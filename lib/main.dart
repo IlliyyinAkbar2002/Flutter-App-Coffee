@@ -4,12 +4,26 @@ void main() {
   runApp(const MainApp());
 }
 
-class HelloWorld extends StatelessWidget {
+class HelloWorld extends StatefulWidget {
   const HelloWorld({super.key});
 
   @override
+  State<HelloWorld> createState() => _HelloWorldState();
+}
+
+class _HelloWorldState extends State<HelloWorld> {
+  // State Variable
+  var name = "";
+  @override
   Widget build(BuildContext context) {
-    return const Text('Hello World!');
+    return Column(
+      children: [
+        Text('Hello $name!'),
+        TextField(
+          onChanged: (value) => setState(() => name = value),
+        ),
+      ],
+    );
   }
 }
 
@@ -20,7 +34,11 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        bannerTheme: Colors.blue,
+        primaryColor: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
       ),
       title: 'Flutter Demo',
       home: Scaffold(
