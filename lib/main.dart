@@ -51,22 +51,17 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Colors.blue,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.dark,
-        ),
-      ),
       title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.brown,
+        brightness: Brightness.dark,
+        fontFamily: 'Poppins',
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Demo'),
+          title: Image.asset('images/logo.png'),
         ),
-        // theme: ThemeData(primaryColor: Colors.blue),
-        body: const Center(
-          child: HelloWorld(),
-        ),
+        body: const HelloWorld(),
       ),
     );
   }
