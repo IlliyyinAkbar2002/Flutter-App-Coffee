@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+// import 'layout.dart';
+import 'offerspage.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Image.asset('images/logo.png'),
+          backgroundColor: Colors.brown,
+        ),
+        body: const OffersPage(),
+      ),
+    );
+  }
 }
 
 class HelloWorld extends StatefulWidget {
