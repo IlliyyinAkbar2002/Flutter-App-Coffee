@@ -5,7 +5,7 @@ class OffersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Offer(title: 'Offer 1', description: 'Description 1');
+    return const Offer(title: 'Coffee Master', description: 'Description 1');
   }
 }
 
@@ -18,8 +18,18 @@ class Offer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(title),
-        Text(description),
+        Center(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+        Center(
+          child: Text(
+            description,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+        ),
       ],
     );
   }
