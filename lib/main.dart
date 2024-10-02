@@ -1,65 +1,62 @@
 import 'package:flutter/material.dart';
 // import 'layout.dart';
 import 'offerspage.dart';
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var selectedIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
+    var currentWidgetPage = const Text("!!!!!!!!!!!!");
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Image.asset('images/logo.png'),
           backgroundColor: Colors.brown,
         ),
-        body: const OffersPage(),
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex: selectedIndex,
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            backgroundColor: Colors.brown,
+            selectedItemColor: Colors.amber,
+            unselectedItemColor: Colors.white,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.coffee),
+                label: 'Offers',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart_checkout_outlined),
+                label: 'Cart',
+              ),
+            ]),
+        body: switch (selectedIndex) {
+          0 => const Home(),
+          1 => const OffersPage(),
+          2 => currentWidgetPage,
+          _ => currentWidgetPage,
+        },
       ),
-    );
-  }
-}
-
-class HelloWorld extends StatefulWidget {
-  const HelloWorld({super.key});
-
-  @override
-  State<HelloWorld> createState() => _HelloWorldState();
-}
-
-class _HelloWorldState extends State<HelloWorld> {
-  // State Variable
-  var name = "";
-  var age = "";
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('Hello $name! My age is $age'),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: TextField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: "Enter your name",
-            ),
-            onChanged: (value) => setState(() => name = value),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: TextField(
-            decoration: const InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter your age',
-            ),
-            onChanged: (value) => setState(() => age = value),
-          ),
-        )
-      ],
     );
   }
 }
@@ -80,7 +77,6 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           title: Image.asset('images/logo.png'),
         ),
-        body: const HelloWorld(),
       ),
     );
   }
