@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // import 'layout.dart';
 import 'pages/offerspage.dart';
 import 'pages/home.dart';
+import 'pages/orderpages.dart';
+import 'pages/menupage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +28,10 @@ class _MyAppState extends State<MyApp> {
           title: Image.asset('images/logo.png'),
           backgroundColor: Colors.brown,
         ),
+        backgroundColor:
+            Colors.brown, // Set the background color of the Scaffold
         bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed, // Add this line
             currentIndex: selectedIndex,
             onTap: (index) {
               setState(() {
@@ -49,11 +54,16 @@ class _MyAppState extends State<MyApp> {
                 icon: Icon(Icons.shopping_cart_checkout_outlined),
                 label: 'Cart',
               ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.coffee_maker_sharp),
+                label: 'Menu',
+              )
             ]),
         body: switch (selectedIndex) {
           0 => const Home(),
           1 => const OffersPage(),
-          2 => currentWidgetPage,
+          2 => const OrderPages(),
+          3 => const MenuPage(),
           _ => currentWidgetPage,
         },
       ),
