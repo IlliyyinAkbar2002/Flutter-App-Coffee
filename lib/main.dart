@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'layout.dart';
-import 'offerspage.dart';
-import 'home.dart';
+import 'pages/offerspage.dart';
+import 'pages/home.dart';
 
 void main() {
   runApp(const MyApp());
