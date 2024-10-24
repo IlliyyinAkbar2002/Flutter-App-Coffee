@@ -4,6 +4,7 @@ import 'pages/offerspage.dart';
 import 'pages/home.dart';
 import 'pages/orderpages.dart';
 import 'pages/menupage.dart';
+import 'datamanager.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  var dataManager = DataManager();
   var selectedIndex = 0;
 
   @override
@@ -62,10 +64,8 @@ class _MyAppState extends State<MyApp> {
         body: switch (selectedIndex) {
           0 => const Home(),
           1 => const OffersPage(),
-          2 => const OrderPages(),
-          3 => const MenuPage(
-              products: [],
-            ),
+          2 => OrderPages(dataManager: dataManager),
+          3 => MenuPage(dataManager: dataManager),
           _ => currentWidgetPage,
         },
       ),
