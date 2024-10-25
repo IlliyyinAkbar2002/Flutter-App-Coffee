@@ -14,6 +14,7 @@ class Product {
     required this.image,
   });
 
+  // Factory Constructor
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json['id'],
@@ -30,6 +31,7 @@ class Category {
 
   Category({required this.name, required this.products});
 
+  // Factory Constructor
   factory Category.fromJson(Map<String, dynamic> json) {
     var productsJson = json['products'] as Iterable<dynamic>;
     var products = productsJson.map((p) => Product.fromJson(p)).toList();

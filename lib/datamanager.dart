@@ -34,9 +34,12 @@ class DataManager {
   }
 
   Future<List<Category>> getMenu() async {
+    // Check if the menu has not been fetched yet
     if (_menu == null) {
+      // Fetch the menu from the server
       await fetchMenu();
     }
+    // Return the menu if it exists, otherwise return an empty list
     return _menu ?? [];
   }
 
