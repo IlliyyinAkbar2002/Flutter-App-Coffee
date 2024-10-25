@@ -10,20 +10,26 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Example: Display the first product
-    var product = products.isNotEmpty
-        ? products[0]
-        : Product(
-            id: 0, name: "No Product", price: 0, image: "black_coffee.png");
-    var product2 = products.isNotEmpty
-        ? products[1]
-        : Product(
-            id: 0, name: "No Product", price: 0, image: "black_coffee.png");
-    return ListView(
-      children: [
-        MenuItem(product: product, onAdd: () {}),
-        MenuItem(product: product2, onAdd: () {}),
-      ],
+    return FutureBuilder<List<Category>>(
+      future: dataManager.getMenu(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(child: Text('No Products Available'));
+        } else {
+          var product = snapshot.data![0].products[0];
+          var product2 = snapshot.data![0].products[1];
+          return ListView(
+            children: [
+              MenuItem(product: product, onAdd: () {}),
+              MenuItem(product: product2, onAdd: () {}),
+            ],
+          );
+        }
+      },
     );
   }
 }
