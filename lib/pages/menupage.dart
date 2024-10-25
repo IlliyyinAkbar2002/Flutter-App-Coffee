@@ -44,7 +44,7 @@ class MenuPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return MenuItem(
                               product: category.products[index],
-                              onAdd: (p) => dataManager.cartAdd(p),
+                              onAdd: (product) => dataManager.cartAdd(product),
                             );
                           },
                         )
@@ -92,7 +92,7 @@ class MenuItem extends StatelessWidget {
         elevation: 4,
         child: Column(
           children: [
-            // Image.asset("images/${product.image}", fit: BoxFit.cover),
+            Image.network(product.imageUrl),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
