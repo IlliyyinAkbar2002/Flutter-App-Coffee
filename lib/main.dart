@@ -4,7 +4,7 @@ import 'pages/offerspage.dart';
 import 'pages/home.dart';
 import 'pages/orderpages.dart';
 import 'pages/menupage.dart';
-import 'datamanager.dart';
+import 'data/datamanager.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/datamodel.dart';
-import '../datamanager.dart';
+import 'package:flutter_application_1/data/datamodel.dart';
+import '../data/datamanager.dart';
 
 class MenuPage extends StatelessWidget {
   final DataManager dataManager;
