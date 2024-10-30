@@ -5,26 +5,40 @@ class OffersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: const [
-        Offer(
-          title: 'Coffee Master',
-          description: 'Description 1',
-        ),
-        Offer(
-          title: 'Coffee Intermediate',
-          description: 'Description 2',
-        ),
-        Offer(
-          title: 'Coffee Beginner',
-          description: 'Description 3',
-        ),
-        Offer(
-          title: 'Coffee Beginner',
-          description: 'Description 3',
-        ),
-      ],
-    );
+    var size = MediaQuery.of(context).size;
+    if (size.width > 500) {
+      return const Wrap(
+        children: [
+          Offer(
+            title: 'Coffee Master',
+            description: 'Description 1',
+          ),
+          Offer(
+            title: 'Coffee Intermediate',
+            description: 'Description 2',
+          ),
+          Offer(
+            title: 'Coffee Beginner',
+            description: 'Description 3',
+          ),
+          Offer(
+            title: 'Coffee Beginner',
+            description: 'Description 3',
+          ),
+        ],
+      );
+    } else if (size.width > 300) {
+      return ListView(
+        children: const [
+          Offer(
+            title: 'Coffee Master',
+            description: 'Description 1',
+          ),
+        ],
+      );
+    } else {
+      return const SizedBox();
+    }
   }
 }
 
@@ -36,7 +50,8 @@ class Offer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 150,
+      width: 150,
       child: Card(
         color: Colors.amberAccent.shade400,
         elevation: 10,
