@@ -4,8 +4,6 @@ import '../datamanager.dart';
 
 class MenuPage extends StatelessWidget {
   final DataManager dataManager;
-  // final List<Product> products;
-
   const MenuPage({super.key, required this.dataManager});
 
   @override

@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Image.asset('images/logo.png'),
           backgroundColor: Colors.brown,
         ),
@@ -64,7 +65,7 @@ class _MyAppState extends State<MyApp> {
         body: switch (selectedIndex) {
           0 => const Home(),
           1 => const OffersPage(),
-          2 => OrderPages(dataManager: dataManager),
+          2 => OrderPage(dataManager: dataManager),
           3 => MenuPage(dataManager: dataManager),
           _ => currentWidgetPage,
         },
