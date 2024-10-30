@@ -44,7 +44,7 @@ class DataManager {
   }
 
   cartRemove(Product product) {
-    cart.removeWhere((item) => item.product.id == product.id);
+    cart.removeWhere((item) => item.product == product);
   }
 
   cartClear() {
